@@ -58,24 +58,26 @@ namespace MyTunes.Api
         [HttpPost]
         public IEnumerable<BsonDocument> GetNofAlbumsByArtist(IEnumerable<string> artistIds)
         {
-            var match = new BsonDocument{
-                        {
-                            "$match",
-                            new BsonDocument
-                            {
-                                {"artistId", new BsonDocument{ {"$in", new BsonArray(artistIds.Select(artistId => ObjectId.Parse(artistId)))}}}
-                            }
-                        }
-            };
-            var project = new BsonDocument
-            {
-                {"$project", new BsonDocument { {"artistId", 1} }}
-            };
-            var group = new BsonDocument
-            {
-                {"$group",new BsonDocument { {"_id", "$artistId"}, {"count", new BsonDocument { {"$sum", 1} }}}}
-            };
+            var match = new BsonDocument("$match",
+                               new BsonDocument("artistId",
+                                   new BsonDocument("$in",
+                                       new BsonArray(artistIds.Select(artistId => ObjectId.Parse(artistId)))))
+                            );
+
+            var project = new BsonDocument("$project",
+                new BsonDocument("artistId", 1)
+                );
+
+            var group = new BsonDocument("$group",
+                new BsonDocument { 
+                        { "_id", "$artistId" }, 
+                        { "count", new BsonDocument ( "$sum", 1 ) 
+                    } 
+                }
+            );
+
             var pipeline = new[] { match, project, group };
+
             var albumCollection = DatabaseHelper.GetAlbumCollection();
             var result = albumCollection.Aggregate(pipeline);
             return result.ResultDocuments;
