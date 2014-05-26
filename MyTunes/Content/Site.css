@@ -1,0 +1,210 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.album {
+    padding: 5px;
+    margin: 2px;
+    color: black;
+}
+
+    .album:hover {
+        margin: 0;
+        border: 2px;
+        border-color: lightgray;
+        border-style: solid;
+    }
+
+    .album img {
+        height: 150px;
+        width: 150px;
+        clear: both;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+.albumtitle {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    color: black;
+    clear: both;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+    .albumtitle div.inputblock {
+        float: left;
+        display: inline-block;
+    }
+
+        .albumtitle div.inputblock input, .albumtitle div.inputblock select {
+            display: block;
+            margin-bottom: 0.25em;
+        }
+
+    .albumtitle div.buttonblock {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    .albumtitle img {
+        height: 100px;
+        width: 100px;
+        display: inline-block;
+        float: left;
+        margin-right: 1em;
+    }
+
+    .albumtitle .editlink {
+        float: right;
+        margin-top: auto;
+        margin-bottom: auto;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+.editimage {
+    cursor: pointer;
+}
+
+.addlink {
+    float: right;
+}
+
+.errorMessages {
+    list-style-image: none;
+    list-style-type: none;
+    padding: 0px;
+}
+
+.itemcontainer {
+    position: relative;
+    display: block;
+    clear: both;
+    overflow: hidden;
+    color: black;
+}
+
+    .itemcontainer a {
+        margin: 1em;
+        display: inline-block;
+    }
+
+.itemtitle {
+    display: block;
+    font-weight: bold;
+}
+
+.itemartist {
+    display: block;
+    font-style: italic;
+}
+
+.itemregular {
+    display: block;
+    font-style: italic;
+}
+
+.search {
+    margin-left: 0em;
+    margin-top: 1em;
+    clear: both;
+    overflow: hidden;
+}
+
+    .search span {
+        width: 0px;
+        height: 34px;
+    }
+
+        .search span i {
+            font-size: 1em;
+            opacity: .4;
+        }
+
+.albumbuybutton {
+    display: block;
+    margin-top: 1.75em;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    border-top: 0 none;
+}
+
+.addrow {
+    margin-bottom: 1em;
+    clear: both;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.deletebutton {
+    margin-right: 6.4em;
+}
+
+.editartistimage {
+    width: 20em;
+}
+
+.rating {
+    color: blue;
+}
+
+.editimagename {
+    width: 25em;
+    float: left;
+}
+
+.editname {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.artistlist {
+    display: inline-block;
+}

@@ -1,0 +1,19 @@
+﻿<div ng-controller="artistsController">
+    <div class="input-group search">
+        <input placeholder="Search" type="text" ng-model="search" class="form-control" />
+        <span class="input-group-addon"><i class="fa fa-3x fa-search"></i></span>
+    </div>
+    <div class="itemcontainer">
+        <a ng-repeat="artist in artists | filter:search | limitTo: 20" ng-href="#/albums/search/{{artist.name}}" right-click="editArtist(artist.id)" class="fa-links">
+            <div class="album">
+                <img ng-hide="artist.imageId" ng-src="/images/{{artist.imageName}}" />
+                <img ng-show="artist.imageId" ng-src="/api/image/{{artist.imageId}}" />
+                <div>
+                    <span class="itemregular">{{artist.name}}</span>
+                    <span class="itemartist">{{artist.nofAlbums}} albums</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<a class="addlink" ng-href="#/editartist/new">add</a>

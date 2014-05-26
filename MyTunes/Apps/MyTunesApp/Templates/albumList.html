@@ -1,0 +1,19 @@
+﻿<div ng-controller="albumsController">
+    <div class="input-group search">
+        <input placeholder="Search" type="text" ng-model="search" class="form-control" />
+        <span class="input-group-addon"><i class="fa fa-3x fa-search"></i></span>
+    </div>
+    <div class="itemcontainer" >
+        <a ng-repeat="album in albums | filter:search | limitTo: 20" ng-href="#/album/{{album.id}}" class="fa-links">
+            <div class="album">
+                <img ng-src="/images/{{album.imageName}}" ng-hide="album.imageId" />
+                <img ng-src="/api/image/{{album.imageId}}" ng-show="album.imageId" />
+                <div>
+                    <span class="itemtitle">{{album.title}}</span>
+                    <span class="itemartist">{{album.artist}}</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<a class="addlink" ng-href="#/editalbum/new">add</a>

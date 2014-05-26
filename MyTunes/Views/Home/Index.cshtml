@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "MyTunes";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html ng-app="myTunesApp" ng-cloak>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - MyTunes</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script language='Javascript'>
+        function mycontextmenu() {
+            return false;
+        }
+        document.oncontextmenu = mycontextmenu;
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{active: navigation.isAlbums}"><a ng-href="/#/albums">Albums</a></li>
+                    <li ng-class="{active: navigation.isArtists}"><a ng-href="/#/artists">Artists</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <ul class="errorMessages" ng-show="errors">
+            <li ng-repeat="error in errors">
+                <div class="alert alert-danger">
+                    {{error.message}}
+                </div>
+            </li>
+        </ul>
+
+        <div ng-show="isProgress" class="progress progress-striped active">
+            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 30%"></div>
+        </div>
+        <div>
+            <div ng-view></div>
+        </div>
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - MyTunes</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/myTunesApp")
+</body>
+</html>

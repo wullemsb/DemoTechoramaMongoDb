@@ -1,0 +1,33 @@
+﻿<div ng-controller="albumController">
+    <div ng-hide="isBusy" class="albumtitle">
+        <img ng-show="album.imageId" ng-src="/api/image/{{album.imageId}}" />
+        <img ng-hide="album.imageId" ng-src="/images/{{album.imageName}}" />
+        <div>
+            <span class="itemtitle">{{album.title}}</span>
+            <span class="itemartist">{{artistNames}}</span>
+            <button class="btn btn-inverse albumbuybutton">{{album.unitPrice}} € Buy</button>
+        </div>
+        <a ng-href="/#/editalbum/{{album.id}}" class="editlink">edit</a>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Popularity</th>
+                <th>Duration</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="animate" ng-repeat="track in album.tracks">
+                <td>{{track.no}}</td>
+                <td>{{track.name}}</td>
+                <td><rating score="track.popularity" stars="5" class="rating"></rating></td>
+                <td>{{track.duration}}</td>
+                <td><button class="btn btn-inverse btn-sm">{{track.unitPrice}} €</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

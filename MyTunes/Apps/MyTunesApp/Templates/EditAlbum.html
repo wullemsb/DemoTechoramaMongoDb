@@ -1,0 +1,59 @@
+﻿<div ng-controller="editAlbumController">
+    <form name="form" novalidate>
+        <div ng-hide="isBusy" class="albumtitle">
+            <img ng-show="isShowImage && !album.imageId" ng-src="/images/{{album.imageName}}" ng-click="showImage(false)" class="editimage" />
+            <img ng-show="isShowImage && album.imageId" ng-src="/api/image/{{album.imageId}}" ng-click="showImage(false)" class="editimage" />
+            <div class="input-group editimagename" ng-hide="isShowImage">
+                <input type="file" accept="image/*" onchange="angular.element(this).scope().selectedFileChanged(this)" />
+            </div>
+            <div class="inputblock">
+                <input type="text" class="form-control" placeholder="title" ng-model="album.title" ng-required />
+                <input type="text" class="form-control" placeholder="price" ng-model="album.unitPrice" ng-required />
+            </div>
+            <div class="buttonblock">
+                <button type="submit" ng-show="album.id" class="btn btn-warning deletebutton" ng-click="delete()">Delete</button>
+                <button type="submit" ng-disabled="form.$invalid || form.$pristine" class="btn btn-primary" ng-click="save()">Save</button>
+                <button type="button" class="btn btn-default" ng-click="cancelEdit()">Cancel</button>
+            </div>
+        </div>
+        <table class="table artistlist">
+            <thead>
+                <tr>
+                    <th>Artist name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="animate" ng-repeat="selectedArtist in selectedArtists">
+                    <td><select class="form-control" ng-model="selectedArtist.artist" ng-options="artist.name for artist in artists"></select></td>
+                    <td><button class="btn btn-inverse btn-sm" ng-click="removeArtist(artist)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <a class="addrow" ng-click="addArtist()">add artist</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Popularity</th>
+                    <th>Duration</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="animate" ng-repeat="track in album.tracks">
+                    <td><input type="text" class="form-control" ng-model="track.no" /></td>
+                    <td><input type="text" class="form-control" ng-model="track.name" /></td>
+                    <td><input type="text" class="form-control" ng-model="track.popularity" /></td>
+                    <td><input type="text" class="form-control" ng-model="track.duration" /></td>
+                    <td><input type="text" class="form-control" ng-model="track.unitPrice" /></td>
+                    <td><button class="btn btn-inverse btn-sm" ng-click="removeTrack(track)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <a class="addrow" ng-click="addTrack()">add track</a>
+    </form>
+</div>
+
